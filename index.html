@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Bob Games</title>
+<style>
+:root{--bg:#0b1120;--panel:#121c2e;--panel2:#1a2940;--text:#f4f7fb;--muted:#aab8cc;--accent:#f2ad43;--line:#293951;--blue:#3478f6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0 24px}
+header{position:sticky;top:0;z-index:5;background:#0b1120ed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.07em}
+.logo{width:42px;height:42px;border-radius:13px;background:var(--accent);color:#172033;display:grid;place-items:center;font-size:23px}
+nav{display:flex;gap:24px;color:var(--muted);font-weight:650}nav a:hover,nav a.active{color:white}
+.hero{padding:66px 0 42px;background:radial-gradient(ellipse at 80% 0%,#25416c66,transparent 50%),linear-gradient(180deg,#101b2e 0%,var(--bg) 100%)}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-.045em;margin:12px 0}
+.hero p{max-width:620px;color:var(--muted);font-size:18px;margin:16px 0 26px}
+.searchrow{display:flex;gap:12px;max-width:720px}.search{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:white;outline:none}.search:focus{border-color:var(--accent)}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:34px 0 18px}.sectionhead h2{font-size:25px;margin:0;letter-spacing:-.025em}.sectionhead p{margin:4px 0 0;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:8px 13px;border-radius:999px;cursor:pointer}.filter.active,.filter:hover{background:#293951;color:white;border-color:#536783}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-bottom:70px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:transform .18s,border-color .18s;cursor:pointer;min-width:0}.card:hover{transform:translateY(-4px);border-color:#657d9d}
+.art{height:158px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.art:before,.detailart:before{content:"";position:absolute;width:220px;height:220px;border:1px solid #ffffff26;border-radius:50%;right:-48px;top:-110px;box-shadow:0 0 0 25px #ffffff09,0 0 0 52px #ffffff07}
+.art .symbol{font-size:66px;filter:drop-shadow(0 10px 12px #0008);z-index:1}
+.art.gta{background:linear-gradient(135deg,#263f56,#9a6d42)}.art.dig{background:linear-gradient(135deg,#225b55,#8a9b4c)}.art.physics{background:linear-gradient(135deg,#542c63,#c45c4b)}.art.banner{background:linear-gradient(135deg,#273d69,#9c7138)}
+.cardbody{padding:15px}.card h3{font-size:18px;margin:0 0 5px}.desc{font-size:13px;color:var(--muted);min-height:40px;margin:0 0 13px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:10px;font-weight:850;letter-spacing:.045em;padding:5px 8px;border-radius:6px;background:#24344b;color:#dce7f5}.tag.online{background:#173d38;color:#8ee1c5}.tag.solo{background:#3a304d;color:#d7baff}
+.cardfoot{border-top:1px solid var(--line);padding:11px 15px;color:var(--accent);font-size:13px;font-weight:800;display:flex;justify-content:space-between}
+.empty{color:var(--muted);padding:35px 0;display:none}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:13px}
+.detail{padding:34px 0 70px}.back{display:inline-flex;gap:8px;color:var(--muted);margin-bottom:20px;font-weight:700}.detailhero{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.detailart{height:320px;border-radius:20px;display:grid;place-items:center;position:relative;overflow:hidden}.detailart .symbol{font-size:110px;z-index:1;filter:drop-shadow(0 15px 20px #0008)}
+.detail h1{font-size:clamp(36px,5vw,54px)}.detaildesc{color:var(--muted);font-size:17px;max-width:650px}
+.primary{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--accent);color:#172033;padding:13px 20px;border-radius:11px;font-weight:900;margin-top:15px}.primary.disabled{opacity:.45;pointer-events:none}
+.info{margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:22px}.info h2{margin:0 0 15px;font-size:20px}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.fact{background:var(--panel2);padding:14px;border-radius:11px}.fact span{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}.fact strong{font-size:15px}
+.notice{color:var(--muted);font-size:13px;margin-top:14px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detailhero{grid-template-columns:1fr}.detailart{height:250px}}
+@media(max-width:560px){.wrap{padding:0 16px}.nav{height:66px}nav{gap:13px;font-size:13px}.hero{padding:48px 0 30px}.grid{gap:12px}.art{height:125px}.art .symbol{font-size:52px}.cardbody{padding:12px}.card h3{font-size:16px}.desc{font-size:12px}.facts{grid-template-columns:repeat(2,1fr)}.detailart{height:210px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#home"><span class="logo">🎮</span><span>BOB GAMES</span></a>
+  <nav><a href="#home" class="active">Home</a><a href="#games">All Games</a><a href="#about">About</a></nav>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap">© <span id="year"></span> Bob Games · Games made by Bob.</div></footer>
+<script>
+const games = [
+ {id:"gta-series",name:"GTA Series",genre:"Open World · Action · Driving",category:"Action",description:"Explore a large open world, drive vehicles, interact with NPCs and discover the city.",mode:"Singleplayer",multiplayer:"No",online:"No",platform:"Web browser",price:"Free",symbol:"🚘",art:"gta",url:"",status:"Game link to be added"},
+ {id:"dig-build",name:"Dig Build",genre:"Sandbox · Building · Survival",category:"Sandbox",description:"Explore a block-based world, gather resources, build structures and play alongside other players.",mode:"Multiplayer",multiplayer:"Yes",online:"Yes",platform:"Web browser",price:"Free",symbol:"⛏️",art:"dig",url:"https://bob-jefferson1824.github.io/dig-build/",status:"Available to play"},
+ {id:"physics-brawler",name:"Physics Brawler",genre:"Action · Fighting · Physics",category:"Action",description:"Jump into physics-driven arenas, battle bots and take on other players.",mode:"Singleplayer and multiplayer",multiplayer:"Yes",online:"Yes (for online multiplayer)",platform:"Web browser",price:"Free",symbol:"🥊",art:"physics",url:"https://bob-jefferson1824.github.io/physics-brawler/",status:"Available to play"},
+ {id:"banner-and-blade",name:"Banner & Blade",genre:"Medieval · Strategy · Multiplayer",category:"Strategy",description:"Build your place in a medieval world, join a house and take part in battles with other players.",mode:"Multiplayer",multiplayer:"Yes",online:"Yes",platform:"Web browser",price:"Free",symbol:"⚔️",art:"banner",url:"https://bob-jefferson1824.github.io/banner-and-blade/",status:"Available to play"}
+];
+const app=document.getElementById("app");
+let activeFilter="All",query="";
+function tags(g){return `<span class="tag ${g.multiplayer==="Yes"?"online":"solo"}">${g.multiplayer==="Yes"?"MULTIPLAYER":g.multiplayer==="No"?"SINGLEPLAYER":"MULTI-MODE"}</span><span class="tag">${g.online==="Yes"?"ONLINE":g.online==="No"?"OFFLINE":"ONLINE OPTIONAL"}</span>`}
+function card(g){return `<article class="card" onclick="location.hash='game/${g.id}'" tabindex="0" role="link" aria-label="View ${g.name} details"><div class="art ${g.art}"><span class="symbol">${g.symbol}</span></div><div class="cardbody"><h3>${g.name}</h3><p class="desc">${g.description}</p><div class="tags">${tags(g)}</div></div><div class="cardfoot"><span>VIEW GAME</span><span>→</span></div></article>`}
+function home(){
+ const filtered=games.filter(g=>(activeFilter==="All"||g.category===activeFilter)&&(`${g.name} ${g.genre} ${g.description}`).toLowerCase().includes(query.toLowerCase()));
+ app.innerHTML=`<section class="hero"><div class="wrap"><div class="eyebrow">THE BOB GAMES COLLECTION</div><h1>Find your next<br>game.</h1><p>Discover games made by Bob. Explore the collection, check the game details and jump straight into the action.</p><div class="searchrow"><input id="search" class="search" placeholder="Search games..." value="${query.replace(/"/g,"&quot;")}" aria-label="Search games"></div></div></section>
+ <section class="wrap" id="games"><div class="sectionhead"><div><h2>All Games</h2><p>Browse the Bob Games collection.</p></div></div><div class="filters">${["All","Action","Sandbox","Strategy"].map(f=>`<button class="filter ${activeFilter===f?"active":""}" onclick="setFilter('${f}')">${f}</button>`).join("")}</div><div class="grid">${filtered.map(card).join("")}</div><div class="empty" style="display:${filtered.length?"none":"block"}">No games found. Try another search.</div></section>`;
+ document.getElementById("search").addEventListener("input",e=>{query=e.target.value;const pos=e.target.selectionStart;home();const el=document.getElementById("search");el.focus();el.setSelectionRange(pos,pos)});
+}
+function setFilter(f){activeFilter=f;home()}
+function detail(id){
+ const g=games.find(x=>x.id===id);if(!g){home();return}
+ app.innerHTML=`<section class="wrap detail"><a class="back" href="#home">← Back to all games</a><div class="detailhero"><div><div class="eyebrow">${g.genre}</div><h1>${g.name}</h1><p class="detaildesc">${g.description}</p>${g.url?`<a class="primary" href="${g.url}" target="_blank" rel="noopener">▶ &nbsp; PLAY GAME</a>`:`<span class="primary disabled">COMING SOON</span>`}<p class="notice">${g.status}</p></div><div class="detailart art ${g.art}"><span class="symbol">${g.symbol}</span></div></div><section class="info"><h2>Game information</h2><div class="facts"><div class="fact"><span>Game mode</span><strong>${g.mode}</strong></div><div class="fact"><span>Multiplayer</span><strong>${g.multiplayer}</strong></div><div class="fact"><span>Online required</span><strong>${g.online}</strong></div><div class="fact"><span>Platform</span><strong>${g.platform}</strong></div><div class="fact"><span>Price</span><strong>${g.price}</strong></div><div class="fact"><span>Genre</span><strong>${g.category}</strong></div></div><p class="notice">Game features and availability may change as each title is updated.</p></section></section>`;
+}
+function render(){const hash=location.hash;if(hash.startsWith("#game/"))detail(hash.slice(6));else if(hash==="#about"){app.innerHTML=`<section class="wrap detail"><a class="back" href="#home">← Back home</a><div class="eyebrow">ABOUT</div><h1>About Bob Games</h1><p class="detaildesc">Bob Games is a home for games made by Bob. Browse the collection, learn what each game offers and open its game page.</p></section>`}else home();document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")=== (hash==="#games"?"#games":hash==="#about"?"#about":"#home")))}
+window.addEventListener("hashchange",render);document.getElementById("year").textContent=new Date().getFullYear();render();
+</script>
+</body>
+</html>

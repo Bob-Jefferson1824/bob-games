@@ -11,7 +11,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
 a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1220px;margin:auto;padding:0 24px}
 header{position:sticky;top:0;z-index:5;background:#0b1120ed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{height:88px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:.08em;flex:0 0 auto}.brandmark{display:block;width:164px;height:82px;overflow:visible}
+.nav{height:112px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:.08em;flex:0 0 auto}.brandmark{display:block;width:180px;height:auto;max-height:104px;object-fit:contain}
 .logo{width:42px;height:42px;border-radius:13px;background:var(--gold);color:#172033;display:grid;place-items:center;font-size:19px;font-weight:1000;letter-spacing:-2px}
 nav{display:flex;gap:24px;color:var(--muted);font-weight:700}nav a:hover,nav a.active{color:white}
 .hero{padding:68px 0 44px;background:radial-gradient(ellipse at 82% 0%,#294d7966,transparent 48%),linear-gradient(180deg,#101c30 0%,var(--bg) 100%)}
@@ -35,15 +35,11 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-s
 .primary{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--gold);color:#172033;padding:13px 20px;border-radius:11px;font-weight:950;margin-top:15px}.primary.disabled{opacity:.45;pointer-events:none}
 .info{margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:22px}.info h2{margin:0 0 15px;font-size:20px}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.fact{background:var(--panel2);padding:14px;border-radius:11px}.fact span{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}.fact strong{font-size:15px}.notice{color:var(--muted);font-size:13px;margin-top:14px}\n.creator-card{margin-top:28px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;max-width:850px}.creator-top{display:flex;align-items:center;gap:18px;margin-bottom:18px}.creator-avatar{width:72px;height:72px;flex:0 0 72px;border-radius:20px;background:linear-gradient(135deg,#f2ad43,#b86d2d);display:grid;place-items:center;color:#172033;font-size:27px;font-weight:1000;letter-spacing:-2px}.creator-card h2{margin:0;font-size:25px}.creator-card p{color:var(--muted);margin:8px 0 18px}.creator-links{display:flex;gap:10px;flex-wrap:wrap}.creator-link{display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);font-weight:850;transition:border-color .15s,transform .15s}.creator-link:hover{border-color:var(--gold);transform:translateY(-2px)}.creator-link span{color:var(--gold)}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detailhero{grid-template-columns:1fr}.detail .cover{height:270px}}
-@media(max-width:560px){.wrap{padding:0 16px}.nav{height:72px}.brandmark{width:125px;height:64px}nav{gap:13px;font-size:13px}.hero{padding:48px 0 30px}.grid{gap:12px}.cover{height:130px}.cardbody{padding:12px}.card h3{font-size:16px}.desc{font-size:12px}.facts{grid-template-columns:repeat(2,1fr)}.detail .cover{height:210px}}
+@media(max-width:560px){.wrap{padding:0 16px}.nav{height:88px}.brandmark{width:142px;height:auto;max-height:82px}nav{gap:13px;font-size:13px}.hero{padding:48px 0 30px}.grid{gap:12px}.cover{height:130px}.cardbody{padding:12px}.card h3{font-size:16px}.desc{font-size:12px}.facts{grid-template-columns:repeat(2,1fr)}.detail .cover{height:210px}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="#home" aria-label="Bob Games home">
-<svg class="brandmark" viewBox="0 0 600 500" role="img" aria-label="BOB Games logo" xmlns="http://www.w3.org/2000/svg">
-<path d="M214 12 L260 165 L404 140 L244 195 L95 468 L138 278 L24 213 L184 183 Z" fill="none" stroke="#e6bc4c" stroke-width="43" stroke-linejoin="miter" stroke-linecap="square"/>
-<text x="250" y="289" fill="#e6bc4c" font-family="Impact, 'Arial Narrow', sans-serif" font-size="76" font-weight="800" letter-spacing="1">BOB Games</text>
-</svg></a><nav><a href="#home" class="active">Home</a><a href="#games">All Games</a><a href="#about">About</a></nav></div></header>
+<header><div class="wrap nav"><a class="brand" href="#home" aria-label="Bob Games home"><img class="brandmark" src="./bob-games-logo.svg" alt="BOB Games"></a><nav><a href="#home" class="active">Home</a><a href="#games">All Games</a><a href="#about">About</a></nav></div></header>
 <main id="app"></main>
 <footer><div class="wrap">© <span id="year"></span> Bob Games · Games and projects made by Bob.</div></footer>
 <script>
